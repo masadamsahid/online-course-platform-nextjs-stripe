@@ -34,7 +34,7 @@ const CreatePage = (props: Props) => {
 
   const onSubmit = async (values: FormSchemaType) => {
     try {
-      const res = await axios.post("/api/course", values);
+      const res = await axios.post("/api/courses", values);
       router.push(`/teacher/courses/${res.data.id}`);
     } catch (error) {
       toast.error("Something went wrong");
