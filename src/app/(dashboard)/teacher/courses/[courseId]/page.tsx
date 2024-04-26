@@ -5,6 +5,7 @@ import { db } from "@/lib/db";
 import IconBadge from "@/_components/icon-badge";
 import { LayoutDashboard } from "lucide-react";
 import TitleForm from "./_components/title-form";
+import DescForm from "./_components/desc-form";
 
 type Props = {
   params: { courseId: string };
@@ -51,6 +52,10 @@ const CourseIdPage = async ({ params }: Props) => {
             <h2 className="text-xl">Customize your course</h2>
           </div>
           <TitleForm
+            initialData={course}
+            courseId={course.id}
+          />
+          <DescForm
             initialData={course}
             courseId={course.id}
           />
