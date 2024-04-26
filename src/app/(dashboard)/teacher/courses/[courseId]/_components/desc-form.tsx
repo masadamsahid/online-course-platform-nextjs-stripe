@@ -6,6 +6,7 @@ import { Input } from "@/_components/ui/input";
 import { Textarea } from "@/_components/ui/textarea";
 import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { type Course } from "@prisma/client";
 import axios from "axios";
 import { Pencil } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -15,13 +16,13 @@ import toast from "react-hot-toast";
 import { z } from "zod";
 
 const formSchema = z.object({
-  description: z.string().min(1, { message: "Title is required" }),
+  description: z.string().min(1, { message: "Description is required" }),
 });
 
 type FormSchemaType = z.infer<typeof formSchema>;
 
 type DescFormProps = {
-  initialData: { description: string };
+  initialData: Course;
   courseId: string;
 }
 
@@ -33,7 +34,9 @@ const DescForm = ({ initialData, courseId, ...props }: DescFormProps) => {
 
   const form = useForm<FormSchemaType>({
     resolver: zodResolver(formSchema),
-    defaultValues: initialData,
+    defaultValues: {
+      description: initialData?.description || ""
+    },
   });
 
   const { isSubmitting, isValid } = form.formState;
@@ -81,7 +84,11 @@ const DescForm = ({ initialData, courseId, ...props }: DescFormProps) => {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Textarea {...field} disabled={isSubmitting} placeholder="e.g. 'This course is about...'" />
+                    <Textarea
+                      {...field}
+                      disabled={isSubmitting}
+                      placeholder="e.g. 'This course is about...'"
+                    />
                   </FormControl>
                   <FormMessage/>
                 </FormItem>
