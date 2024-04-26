@@ -3,11 +3,12 @@ import { redirect } from "next/navigation";
 
 import { db } from "@/lib/db";
 import IconBadge from "@/_components/icon-badge";
-import { LayoutDashboard } from "lucide-react";
+import { CircleDollarSign, LayoutDashboard, ListChecks } from "lucide-react";
 import TitleForm from "./_components/title-form";
 import DescForm from "./_components/desc-form";
 import ImageForm from "./_components/image-form";
 import CategoryForm from "./_components/category-form";
+import PriceForm from "./_components/price-form";
 
 type Props = {
   params: { courseId: string };
@@ -75,6 +76,29 @@ const CourseIdPage = async ({ params }: Props) => {
             courseId={course.id}
             options={categories.map(({ id, name }) => ({ label: name, value: id }))}
           />
+        </div>
+        <div className="space-y-6">
+          <div>
+            <div className="flex items-center gap-x-2">
+              <IconBadge icon={ListChecks} />
+              <h2 className="text-xl">Course chapters</h2>
+            </div>
+            <div>
+              TODO: Chapters
+            </div>
+          </div>
+          <div>
+            <div className="flex items-center gap-x-2">
+              <IconBadge icon={CircleDollarSign} />
+              <h2 className="text-xl">Sell your course</h2>
+            </div>
+            <div>
+              <PriceForm
+                initialData={course}
+                courseId={course.id}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>
