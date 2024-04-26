@@ -8,12 +8,13 @@ import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import type { Prisma } from "@prisma/client";
 import axios from "axios";
-import { Pencil, PlusCircle } from "lucide-react";
+import { Loader2, Pencil, PlusCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { z } from "zod";
+import ChaptersList from "./chapters-list";
 
 const formSchema = z.object({
   title: z.string().min(1),
@@ -34,7 +35,7 @@ const ChaptersForm = ({ initialData, courseId, ...props }: ChaptersFormProps) =>
   const [isCreating, setIsCreating] = useState<boolean>(false);
   const toggleCreating = () => setIsCreating(p => !p);
 
-  const [isUpdating, setIsEditing] = useState<boolean>(false);
+  const [isUpdating, setIsUpdating] = useState<boolean>(false);
 
   const form = useForm<FormSchemaType>({
     resolver: zodResolver(formSchema),
@@ -58,9 +59,35 @@ const ChaptersForm = ({ initialData, courseId, ...props }: ChaptersFormProps) =>
       console.log(error);
     }
   }
+  
+  const onEdit =  (id: string) => {
+    router.push(`/teacher/courses/${courseId}/chapters/${id}`);
+  }
+
+  const onReorder = async (updatedData: { id: string; position: number; }[]) => {
+    try {
+      setIsUpdating(true);
+      await axios.put(`/api/courses/${courseId}/chapters/reorder`, {
+        list: updatedData,
+      });
+
+      toast.success("Chapters reordered");
+      router.refresh();
+    } catch (error) {
+      toast.error("Something went wrong");
+      console.log(error);
+    } finally {
+      setIsUpdating(false);
+    }
+  }
 
   return (
-    <div className="mt-6 border bg-slate-100 rounded-md p-4">
+    <div className="relative mt-6 border bg-slate-100 rounded-md p-4">
+      {isUpdating && (
+        <div className="absolute size-full bg-slate-500/20 top-0 right-0 rounded-md flex items-center justify-center">
+          <Loader2 className="animate-spin size-6 text-sky-700" />
+        </div>
+      )}
       <div className="font-medium flex items-center justify-between">
         Course chapters
         <Button onClick={toggleCreating} variant='ghost' className="">
@@ -108,6 +135,11 @@ const ChaptersForm = ({ initialData, courseId, ...props }: ChaptersFormProps) =>
         >
           {!initialData.chapters.length && "No Chapters"}
           {/* TODO: Add list of chapters  */}
+          <ChaptersList
+            onEdit={onEdit}
+            onReorder={onReorder}
+            items={initialData.chapters || []}
+          />
         </div>
       )}
       {!isCreating && (
