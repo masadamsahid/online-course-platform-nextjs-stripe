@@ -66,7 +66,7 @@ const TitleForm = ({ initialData, courseId, ...props }: TitleFormProps) => {
           )}
         </Button>
       </div>
-      {isEditing && (
+      {!isEditing && (
         <p className="text-sm mt-2">
           {initialData.title}
         </p>

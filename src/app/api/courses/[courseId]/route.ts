@@ -2,22 +2,25 @@ import { db } from "@/lib/db";
 import { auth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 
-export async function POST(req:Request) {
+export async function PATCH(req: Request, { params }: { params: { courseId: string }; }) {
   try {
     const { userId } = auth();
     if(!userId) return new NextResponse("Unauthorized", { status: 401 });
     
-    const { title } = await req.json();
-    if(!title) return new NextResponse("Title is missing", { status: 404 });
+    const { courseId } = params;
+    if(!courseId) return new NextResponse("Course ID is missing", { status: 400 });
     
-    const course = await db.course.create({
-      data: { userId, title },
+    const { userId:_, courseId:__, createdAt, updatedAt, ...values } = await req.json();
+    
+    const course = await db.course.update({
+      where: { id: courseId, userId },
+      data: { ...values },
     });
     if(!course) return new NextResponse("Course not found", { status: 404 });
     
     return NextResponse.json(course);
   } catch (error) {
-    console.log("[COURSES_POST]", error);
+    console.log("[COURSE_ID_PATCH]", error);
     return new NextResponse("Internal Error", { status: 500 });
   }
 }
