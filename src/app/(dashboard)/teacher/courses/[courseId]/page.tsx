@@ -7,6 +7,7 @@ import { LayoutDashboard } from "lucide-react";
 import TitleForm from "./_components/title-form";
 import DescForm from "./_components/desc-form";
 import ImageForm from "./_components/image-form";
+import CategoryForm from "./_components/category-form";
 
 type Props = {
   params: { courseId: string };
@@ -19,7 +20,12 @@ const CourseIdPage = async ({ params }: Props) => {
   const course = await db.course.findUnique({
     where: { id: params.courseId, userId },
   });
-  if(!course) return redirect("/");  
+  if(!course) return redirect("/");
+  
+  const categories = await db.category.findMany({
+    orderBy: { name: "asc" },
+  });
+  console.log(categories);
   
   const requiredFields = [
     course.title,
@@ -63,6 +69,11 @@ const CourseIdPage = async ({ params }: Props) => {
           <ImageForm
             initialData={course}
             courseId={course.id}
+          />
+          <CategoryForm
+            initialData={course}
+            courseId={course.id}
+            options={categories.map(({ id, name }) => ({ label: name, value: id }))}
           />
         </div>
       </div>
