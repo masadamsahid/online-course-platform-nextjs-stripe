@@ -29,7 +29,7 @@ export async function DELETE(
 
     return NextResponse.json(course);
   } catch (error) {
-    console.log("[COURSE_ATTACHMENTS_POST]", error);
+    console.log("[COURSE_ATTACHMENT_ID_POST]", error);
     return new NextResponse("Internal Error", { status: 500 });
   }
 }
