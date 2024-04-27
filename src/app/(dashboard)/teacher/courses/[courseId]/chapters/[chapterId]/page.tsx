@@ -7,6 +7,7 @@ import { redirect } from "next/navigation";
 import ChapterTitleForm from "./_components/chapter-title-form";
 import ChapterDescForm from "./_components/chapter-desc-form";
 import ChapterAccessForm from "./_components/chapter-access-form";
+import ChapterVideoForm from "./_components/chapter-video-form";
 
 type ChapterIdPageProps = {
   params: {
@@ -101,6 +102,11 @@ const ChapterIdPage = async ({ params, ...props }: ChapterIdPageProps) => {
             <IconBadge icon={Video} />
             <h2 className="text--xl">Add a video</h2>
           </div>
+          <ChapterVideoForm
+            initialData={chapter}
+            courseId={courseId}
+            chapterId={chapterId}
+          />
         </div>
       </div>
     </div>
