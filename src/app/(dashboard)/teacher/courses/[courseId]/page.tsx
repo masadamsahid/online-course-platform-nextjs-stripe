@@ -36,7 +36,7 @@ const CourseIdPage = async ({ params }: Props) => {
   const categories = await db.category.findMany({
     orderBy: { name: "asc" },
   });
-  console.log(categories);
+  // console.log(categories);
 
   const requiredFields = [
     course.title,
