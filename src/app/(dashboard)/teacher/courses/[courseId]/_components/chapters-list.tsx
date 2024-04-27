@@ -103,7 +103,6 @@ const ChaptersList = ({ items, onReorder, onEdit, ...props }: ChaptersListProps)
           </div>
         )}
       </Droppable>
-      ChaptersList
     </DragDropContext>
   );
 }
