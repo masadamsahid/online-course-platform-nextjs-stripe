@@ -4,6 +4,10 @@ import { db } from "@/lib/db";
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import { VideoPlayer } from "./_components/video-player";
+import { CourseEnrollButton } from "./_components/course-enroll-button";
+import { Separator } from "@/_components/ui/separator";
+import Preview from "@/_components/preview";
+import { File } from "lucide-react";
 
 type Props = {
   params: {
@@ -51,6 +55,43 @@ const ChapterIdPage = async ({ params: { chapterId, courseId } }: Props) => {
             isLocked={isLocked}
             completOnEnd={completOnEnd}
           />
+        </div>
+        <div>
+          <div className="p-4 flex flex-col md:flex-row items-center justify-between">
+            <h2 className="text-2xl font-semibold mb-2">
+              {chapter.title}
+            </h2>
+            {purchase ? (
+              <div>
+                {/* TODO: Add CourseProgresButton */}
+              </div>
+            ) : (
+              <CourseEnrollButton
+                courseId={courseId}
+                price={course.price!}
+              />
+            )}
+          </div>
+          <Separator />
+          <div>
+            <Preview value={chapter.description!} />
+            {!!attachements.length && (
+              <>
+                <Separator />
+                <div className="p-4">
+                  {attachements.map(a => (
+                    <a
+                      key={a.id} href={a.url} target="_blank"
+                      className="flex items-center p-3 w-full bg-sky-200 border text-sky-700 rounded-md hover:underline"
+                    >
+                      <File className="size-4" />
+                      <p className="line-clamp-1">{a.name}</p>
+                    </a>
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
         </div>
       </div>
     </div>
