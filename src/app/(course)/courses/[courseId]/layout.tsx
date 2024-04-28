@@ -47,7 +47,7 @@ const CourseLayout = async ({ children, params }: Props) => {
         />
       </div>
       <main className="md:pl-80 pt-[80px] h-full">
-        {course.title}
+        {children}
       </main>
     </div>
   );
