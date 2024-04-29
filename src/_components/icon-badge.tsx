@@ -8,7 +8,7 @@ const backgoundVariants = cva(
     variants: {
       variant: {
         default: "bg-sky-100",
-        succsess: "bg-emerald-100"
+        success: "bg-emerald-100"
       },
       size: {
         default: "p-2",
