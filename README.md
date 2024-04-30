@@ -31,8 +31,13 @@ Techs:
         alt="online-course-platform-student-dashboard"
       >
     </td>
-  </tr>
-  <tr>
+    <td>
+      <img
+        title="online-course-platform-stripe-checkout"
+        src="https://github.com/masadamsahid/online-course-platform-nextjs-stripe/assets/62916459/c4dee941-3164-4698-bf0b-feb960fcbb32"
+        alt="online-course-platform-stripe-checkout"
+      >
+    </td>
     <td>
       <img
         title="online-course-platform-teacher-dashboard"
