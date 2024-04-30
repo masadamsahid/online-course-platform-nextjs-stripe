@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Online Course Platform
 
-## Getting Started
+Techs:
+- React (Next.js)
+- Shadcn-UI
+- Tailwind CSS
+- Prisma
+- MySQL
+- Uploadthing (storing images and other docs)
+- Stripe as the payment gateway
+- Mux (for video streaming)
 
-First, run the development server:
+## [Need a live demo? Contact me! 😉](https://masadamsahid.vercel.app/#about) 
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Previews:
+![online-course-platform-student-browse](https://github.com/masadamsahid/online-course-platform-nextjs-stripe/assets/62916459/70148de9-1bd1-4845-9d3c-0f4b5d3ef802)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<table>
+  <tr>
+    <td>
+      <img
+        title="online-course-platform-enroll"
+        src="https://github.com/masadamsahid/online-course-platform-nextjs-stripe/assets/62916459/c4a0c02b-9441-48c6-83d5-9537960b4a81"
+        alt="online-course-platform-enroll"
+      >
+    </td>
+    <td>
+      <img
+        title="online-course-platform-student-dashboard"
+        src="https://github.com/masadamsahid/online-course-platform-nextjs-stripe/assets/62916459/a9430ef5-51a9-4406-be3a-8e0089002ff3"
+        alt="online-course-platform-student-dashboard"
+      >
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img
+        title="online-course-platform-teacher-dashboard"
+        src="https://github.com/masadamsahid/online-course-platform-nextjs-stripe/assets/62916459/c06d3c9f-d593-4e13-a1f3-7da63779d2d3"
+        alt="online-course-platform-teacher-dashboard"
+      >
+    </td>
+    <td>
+      <img
+        title="online-course-platform-teacher-analytics"
+        src="https://github.com/masadamsahid/online-course-platform-nextjs-stripe/assets/62916459/586e5920-d36c-4d5e-8233-697e3b05b6c4"
+        alt="online-course-platform-teacher-analytics"
+      >
+    </td>
+  </tr>
+</table>
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
