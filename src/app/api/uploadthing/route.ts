@@ -8,4 +8,7 @@ export const { GET, POST } = createRouteHandler({
  
   // Apply an (optional) custom config:
   // config: { ... },
+  config: {
+    callbackUrl: process.env.NEXT_PUBLIC_CALLBACK_URL,
+  },
 });
