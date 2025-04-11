@@ -1,5 +1,7 @@
 # Online Course Platform
 
+[Demo Link ↗](https://online-course-masadamsahid.vercel.app/)
+
 Techs:
 - React (Next.js)
 - Shadcn-UI
@@ -10,7 +12,7 @@ Techs:
 - Stripe as the payment gateway
 - Mux (for video streaming)
 
-## [Need a live demo? Contact me! 😉](https://masadamsahid.vercel.app/#about) 
+ 
 
 ## Previews:
 ![online-course-platform-student-browse](https://github.com/masadamsahid/online-course-platform-nextjs-stripe/assets/62916459/70148de9-1bd1-4845-9d3c-0f4b5d3ef802)
